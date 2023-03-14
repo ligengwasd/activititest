@@ -13,7 +13,7 @@ http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- 这里可以使用 链接池 dbcp-->
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3306/activiti" />
+        <property name="url" value="jdbc:mysql://127.0.0.1:3306/activiti?useUnicode=true&amp;characterEncoding=UTF8&amp;useSSL=false&amp;serverTimezone=Asia/Shanghai&amp;allowMultiQueries=true&amp;allowPublicKeyRetrieval=true" />
         <property name="username" value="root" />
         <property name="password" value="wasdwasd" />
         <property name="maxActive" value="3" />
