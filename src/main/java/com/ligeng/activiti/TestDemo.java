@@ -30,6 +30,7 @@ public class TestDemo {
                 .addClasspathResource("bpmn/evection.bpmn") // 添加bpmn资源
                 // .addClasspathResource("bpmn/evection.png")  // 添加png资源
                 .name("出差申请流程")
+                .key("myEvection")
                 .deploy();
 //        4、输出部署信息
         System.out.println("流程部署id：" + deployment.getId());
@@ -46,7 +47,7 @@ public class TestDemo {
         RuntimeService runtimeService = processEngine.getRuntimeService();
 //        3、根据流程定义Id启动流程
         ProcessInstance processInstance = runtimeService
-                .startProcessInstanceByKey("myEvection");
+                .startProcessInstanceByKey("myProcess_1");
 //        输出内容
         System.out.println("流程定义id：" + processInstance.getProcessDefinitionId());
         System.out.println("流程实例id：" + processInstance.getId());
@@ -64,7 +65,7 @@ public class TestDemo {
         TaskService taskService = processEngine.getTaskService();
 //        根据流程key 和 任务负责人 查询任务
         List<Task> list = taskService.createTaskQuery()
-                .processDefinitionKey("myEvection") //流程Key
+                .processDefinitionKey("myProcess_1") //流程Key
                 .taskAssignee(assignee)//只查询该任务负责人的任务
                 .list();
 
@@ -88,7 +89,7 @@ public class TestDemo {
 //        根据流程key 和 任务的负责人 查询任务
 //        返回一个任务对象
         Task task = taskService.createTaskQuery()
-                .processDefinitionKey("myEvection") //流程Key
+                .processDefinitionKey("myProcess_1") //流程Key
                 .taskAssignee("zhangsan")  //要查询的负责人
                 .singleResult();
 
@@ -111,7 +112,7 @@ public class TestDemo {
 //          orderByProcessDefinitionVersion 按照版本排序
 //        desc倒叙
 //        list 返回集合
-        List<ProcessDefinition> definitionList = processDefinitionQuery.processDefinitionKey("myEvection")
+        List<ProcessDefinition> definitionList = processDefinitionQuery.processDefinitionKey("myProcess_1")
                 .orderByProcessDefinitionVersion()
                 .desc()
                 .list();
